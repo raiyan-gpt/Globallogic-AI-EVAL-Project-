@@ -67,3 +67,5 @@ chroma_db/
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Project-specific ignores

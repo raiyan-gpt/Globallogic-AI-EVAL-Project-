@@ -125,15 +125,17 @@ AI-Eval-Project/
 
 ---
 
-## 🚀 Installation
+## 🚀 First-Time Setup
+
+Follow these steps when running the project for the first time.
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone <repo-url>
-cd AI-Eval-Project
+git clone https://github.com/raiyan-gpt/Globallogic-AI-EVAL-Project-.git
+cd Globallogic-AI-EVAL-Project-
 ```
 
-### 2️⃣ Create a virtual environment
+### 2️⃣ Create and activate a virtual environment
 
 **Windows**
 ```bash
@@ -141,7 +143,7 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-**Linux / macOS**
+**macOS / Linux**
 ```bash
 python3 -m venv venv
 source venv/bin/activate
@@ -161,9 +163,9 @@ GOOGLE_API_KEY=your_google_api_key
 GROQ_API_KEY=your_groq_api_key
 ```
 
-### 5️⃣ Add documents
+### 5️⃣ Prepare the knowledge base
 
-Place all PDF documents inside:
+Ensure the PDF documents are available inside:
 ```
 data/pdfs/
 ```
@@ -173,18 +175,51 @@ data/pdfs/
 python src/create_vectorstore.py
 ```
 
-This will:
-- 📥 Load all PDF documents
-- ✂️ Split documents into chunks
-- 🧬 Generate embeddings
-- 🗄️ Create the local Chroma Vector Database
+This step:
+- 📥 Loads all PDF documents
+- ✂️ Splits the documents into chunks
+- 🧬 Generates embeddings
+- 🗄️ Creates the local Chroma Vector Database
 
-### 7️⃣ Launch the application
+> ⚠️ **Important:** This step must be completed before running the application for the first time.
+
+### 7️⃣ (Optional) Verify the retrieval pipeline
+
+You can test whether the vector database was created successfully:
+```bash
+python src/test_retrieval.py
+```
+
+### 8️⃣ (Optional) Verify Gemini connectivity
+```bash
+python src/test_gemini.py
+```
+This checks whether your Gemini API key is configured correctly.
+
+### 9️⃣ Launch the application
 ```bash
 streamlit run app.py
 ```
 
-🌐 The application will be available at: **http://localhost:8501**
+🌐 The application will be available at:
+```
+http://localhost:8501
+```
+
+---
+
+## 🔁 Running the Project After Initial Setup
+
+After the initial setup is complete, future runs only require:
+```bash
+streamlit run app.py
+```
+
+If you add, remove, or modify any PDF documents, rebuild the vector database by running:
+```bash
+python src/create_vectorstore.py
+```
+before launching the application again.
 
 ---
 
